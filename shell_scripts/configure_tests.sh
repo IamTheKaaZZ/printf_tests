@@ -43,10 +43,8 @@ exec 3<&0
 exec 0< $FILENAME
 while read LINE
 do
-		sed "s|\\|\\\|g" $LINE
-		echo -e $LINE
-        #sed "s|&|$LINE|g" $TEST_M_C \
-		#> temp_test.c
+        sed "s|&|$LINE|g" $TEST_M_C \
+		> temp_test.c
 		exit 0
         :
 done

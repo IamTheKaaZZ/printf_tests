@@ -6,7 +6,7 @@
 /*   By: bcosters <bcosters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 11:47:35 by bcosters          #+#    #+#             */
-/*   Updated: 2021/04/13 15:07:28 by bcosters         ###   ########.fr       */
+/*   Updated: 2021/04/14 09:41:13 by bcosters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ int	main()
 	char	*ptrnull = NULL;
 
 	ret1 = printf&;
+	printf("\n");
 	ret2 = ft_printf&;
-
+	printf("\n");
 	if (ret1 == ret2)
 		printf("OK");
 	else

@@ -6,7 +6,7 @@
 /*   By: bcosters <bcosters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 11:47:35 by bcosters          #+#    #+#             */
-/*   Updated: 2021/04/13 15:07:28 by bcosters         ###   ########.fr       */
+/*   Updated: 2021/04/14 09:41:13 by bcosters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ int	main()
 	char	*string = "That's a nice string you got there...";
 	char	*ptrnull = NULL;
 
-	ret1 = printf("NORMAL 'c'nt[%c]n", 0);
-	ret2 = ft_printf("NORMAL 'c'nt[%c]n", 0);
-
+	ret1 = printf("[%c]", 0);
+	printf("\n");
+	ret2 = ft_printf("[%c]", 0);
+	printf("\n");
 	if (ret1 == ret2)
 		printf("OK");
 	else

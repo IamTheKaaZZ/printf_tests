@@ -6,7 +6,7 @@
 #    By: bcosters <bcosters@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/08 10:32:48 by bcosters          #+#    #+#              #
-#    Updated: 2021/04/13 15:41:38 by bcosters         ###   ########.fr        #
+#    Updated: 2021/04/14 09:59:21 by bcosters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 #	Project sources/objects/headers
 
-TEST	= test_main.c
+TEST	= temp_test.c
 
 HEAD	= shell_scripts/simple_debugs.h ../ft_printf.h
 
@@ -79,6 +79,8 @@ debugs:
 choice:
 			@bash $(SCRIPTDIR)$(CHOICE)
 			@echo
+
+test:
 
 end:
 			@echo "$(ENDC)If there were any $(RED)KO's$(ENDC), check the $(LPURP)deepthought$(ENDC) folder for the logs of the tests"

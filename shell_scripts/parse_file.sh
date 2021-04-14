@@ -69,14 +69,18 @@ awk '/retval/ {print substr($0, index($0, $3))}' $FILENAME \
 | sed 's| = \|%d\|||g' \
 | sed 's| = \[%d\]||g' \
 | sed 's|ft_printf||g' \
-| sed 's|;||g' > logs/$OUTPUTFILE
+| sed 's|;||g' | sed "s|]..|]|g" \
+> logs/$OUTPUTFILE
+
 }
 ######################################
 function get_d_conv_lines
 {
 grep "[- +#.*0-9].*[di]\]" logs/$OUTPUTFILE \
 | awk 'NR==1, NR==100 {print $0}' \
+| sed "s|\".*\[|\"[|g" \
 > logs/$D_CONVERSIONS
+
 
 grep "[hl].*[di]" logs/$D_CONVERSIONS \
 > logs/$D_CONV_BHL
@@ -90,7 +94,7 @@ grep "[- +#].*[di]" logs/$D_CONVERSIONS \
 sed -n -e 1,9p -e 30,31p -e 34p -e 37p -e 46,48p -e 57,81p -e 84,97p logs/$D_CONVERSIONS \
 > logs/$D_CONV_M
 
-rm logs/$D_CONVERSIONS
+#rm logs/$D_CONVERSIONS
 }
 ######################################
 function get_x_conv_lines
@@ -110,7 +114,7 @@ sed -n '66,69p' logs/$X_CONVERSIONS \
 
 grep "#" logs/$X_CONVERSIONS \
 > logs/$X_CONV_BFL
-rm logs/$X_CONVERSIONS
+#rm logs/$X_CONVERSIONS
 }
 ######################################
 function get_u_conv_lines
@@ -153,7 +157,7 @@ sed -n '250,252p' logs/$OUTPUTFILE > logs/$C_CONV_PERCENT
 sed -e '1,9d; 33,34d; 56,57d;' logs/$C_CONV_M \
 | sed -e 's/c\]/%\]/g; s/, [-0-9].*/)/g' >> logs/$C_CONV_PERCENT
 sed -e 's/c\]/%\]/g; s/, [-0-9].*/)/g' logs/$C_CONV_BFL > logs/$C_CONV_PERCENT_B
-rm logs/$C_CONVERSIONS
+#rm logs/$C_CONVERSIONS
 }
 ######################################
 function get_s_conv_lines
@@ -165,7 +169,7 @@ grep "[- +#.*0-9].*s" logs/$OUTPUTFILE \
 sed -n -e '1,3p; 12,38p;' logs/$S_CONVERSIONS > logs/$S_CONV_M
 sed -n '3,11p' logs/$S_CONVERSIONS > logs/$S_CONV_BFL
 sed -n '39,44p' logs/$S_CONVERSIONS > logs/$S_CONV_BHL
-rm logs/$S_CONVERSIONS
+#rm logs/$S_CONVERSIONS
 }
 ######################################
 function get_p_conv_lines
@@ -201,22 +205,4 @@ get_u_conv_lines
 get_c_perc_conv_lines
 get_s_conv_lines
 get_p_conv_lines
-#awk '{sub(/\\/,/\\\/, ""); print $0}' $C_CONV_M
-#sed -i "s|/\|/\\|g" $C_CONV_BFL
-#sed -i "s|/\|/\\|g" $C_CONV_BHL
-#sed -i "s|/\|/\\|g" $C_CONV_PERCENT
-#sed -i "s|/\|/\\|g" $C_CONV_PERCENT_B
-#sed -i "s|/\|/\\|g" $S_CONV_M
-#sed -i "s|/\|/\\|g" $S_CONV_BFL
-#sed -i "s|/\|/\\|g" $S_CONV_BHL
-#sed -i "s|/\|/\\|g" $D_CONV_M
-#sed -i "s|/\|/\\|g" $D_CONV_BFL
-#sed -i "s|/\|/\\|g" $D_CONV_BHL
-#sed -i "s|/\|/\\|g" $U_CONV_M
-#sed -i "s|/\|/\\|g" $U_CONV_BFL
-#sed -i "s|/\|/\\|g" $U_CONV_BHL
-#sed -i "s|/\|/\\|g" $X_CONV_M
-#sed -i "s|/\|/\\|g" $X_CONV_BFL
-#sed -i "s|/\|/\\|g" $X_CONV_BHL
-#sed -i "s|/\|/\\|g" $P_CONVERSIONS
-rm logs/$OUTPUTFILE
+#rm logs/$OUTPUTFILE
