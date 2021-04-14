@@ -6,7 +6,7 @@
 #    By: bcosters <bcosters@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/08 10:32:48 by bcosters          #+#    #+#              #
-#    Updated: 2021/04/14 15:13:06 by bcosters         ###   ########.fr        #
+#    Updated: 2021/04/14 16:14:23 by ejuliao-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@
 # -*- Variable definitions -*-
 
 #	Project sources/objects/headers
+
+PRINTF_PATH = ..
 
 TEST	= temp_test.c
 RESULTS = Results.log
@@ -86,7 +88,7 @@ $(RESULTS):
 			touch $(RESULTS)
 
 test:		$(RESULTS)
-			@${CC} ${CFLAGS} ${NOFLAG} ../libftprintf.a ${LIB} ${TEST} -o ${NAME}
+			@${CC} ${CFLAGS} ${NOFLAG} ${PRINTF_PATH}/libftprintf.a -I${PRINTF_PATH} ${LIB} ${TEST} -o ${NAME}
 			@./${NAME} > result.log
 			@rm -f ${NAME}
 end:

@@ -6,12 +6,12 @@
 /*   By: bcosters <bcosters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 11:47:35 by bcosters          #+#    #+#             */
-/*   Updated: 2021/04/14 10:44:12 by bcosters         ###   ########.fr       */
+/*   Updated: 2021/04/14 16:14:39 by ejuliao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "simple_debugs.h"
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 #include <stdio.h>
 #include <limits.h>
 #include <unistd.h>
