@@ -48,5 +48,5 @@ in `tests/test_main.c` for it to work properly.
 
 ### I'm really lazy and just want an answer to copy paste
 
-Okay then, here is a link to my version that passed:\
+Okay then, here is a link to my version that passed:
 > [THE ANSWER FOR LAZY PEOPLE](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
