@@ -6,7 +6,7 @@
 #    By: bcosters <bcosters@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/08 10:32:48 by bcosters          #+#    #+#              #
-#    Updated: 2021/04/14 09:59:21 by bcosters         ###   ########.fr        #
+#    Updated: 2021/04/14 14:13:51 by bcosters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@
 #	Project sources/objects/headers
 
 TEST	= temp_test.c
+RESULTS = Results.log
+FINAL	= finalresults.log
 
 HEAD	= shell_scripts/simple_debugs.h ../ft_printf.h
 
@@ -25,7 +27,7 @@ LIBHEAD	= simple_debugs.h
 SCRIPTDIR	= shell_scripts/
 LOGDIR	= logs/
 
-NAME	= test_
+NAME	= test
 
 # Compiler stuff
 
@@ -33,7 +35,7 @@ CC		= gcc
 
 CFLAGS 	= -Wall -Wextra -Werror
 
-NOFLAG	= -Wno-format
+NOFLAG	= -Wno-format -Wno-unused-parameter -Wno-unused-variable
 
 # Shell scripts
 
@@ -80,19 +82,27 @@ choice:
 			@bash $(SCRIPTDIR)$(CHOICE)
 			@echo
 
-test:
+$(RESULTS):
+			touch $(RESULTS)
 
+test:		$(RESULTS)
+			@${CC} ${CFLAGS} ${NOFLAG} ../libftprintf.a ${LIB} ${TEST} -o ${NAME}
+			@./${NAME} > result.log
+			@rm -f ${NAME}
+			@bash shell_scripts/compare_results.sh result.log
+			@rm -f result.log
 end:
-			@echo "$(ENDC)If there were any $(RED)KO's$(ENDC), check the $(LPURP)deepthought$(ENDC) folder for the logs of the tests"
-			@echo "$(YELLOW)YOUR RESULT:$(ENDC) test1.log, $(CYAN)INTENDED OUTPUT:$(ENDC) test1output.log"
+			@echo "$(ENDC)If there were any $(RED)KO's$(ENDC), check the $(LPURP)$(FINAL)$(ENDC) file for the logs of the tests"
 
 .PHONY:		clean
 
 clean:
 	@rm -f ${LIB} ${LIBHEAD}
-	@rm -rf ${LOGDIR}
+	@rm -rf ${LOGDIR} ${NAME} ${TEST} ${RESULTS}
 
 fclean:		clean
 	@rm -f ${wildcard tests/*mand*} ${wildcard tests/*bonus*}
+	@rm -f ${FINAL}
+
 
 re:			fclean all

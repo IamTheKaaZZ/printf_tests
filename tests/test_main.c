@@ -6,14 +6,15 @@
 /*   By: bcosters <bcosters@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 11:47:35 by bcosters          #+#    #+#             */
-/*   Updated: 2021/04/14 09:41:13 by bcosters         ###   ########.fr       */
+/*   Updated: 2021/04/14 10:44:12 by bcosters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../simple_debugs.h"
-#include "../../ft_printf.h"
+#include "simple_debugs.h"
+#include "../include/ft_printf.h"
 #include <stdio.h>
 #include <limits.h>
+#include <unistd.h>
 
 int	main()
 {
@@ -23,12 +24,11 @@ int	main()
 	char	*ptrnull = NULL;
 
 	ret1 = printf&;
-	printf("\n");
 	ret2 = ft_printf&;
-	printf("\n");
+	write(1, "\n", 1);
 	if (ret1 == ret2)
-		printf("OK");
+		printf("\nOK");
 	else
-		printf("KO");
+		printf("\nKO");
 	check_leaks();
 }

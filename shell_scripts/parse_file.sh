@@ -70,6 +70,7 @@ awk '/retval/ {print substr($0, index($0, $3))}' $FILENAME \
 | sed 's| = \[%d\]||g' \
 | sed 's|ft_printf||g' \
 | sed 's|;||g' | sed "s|]..|]|g" \
+| sed '190,191d' \
 > logs/$OUTPUTFILE
 
 }
@@ -147,6 +148,9 @@ sed 's/[di]/c/g' logs/$D_CONV_M \
 | sed 's/ -[0-9].*)/ 69)/g' \
 | sed '24 s/, 69/, -5, 69/' \
 | sed '25 s/, 69/, -20, 69/' \
+| sed '32 s/, 69/, 0, 69/' \
+| sed '18,19 s/, 69/, 5, 69/' \
+| sed '54,55d' \
 > logs/$C_CONV_M
 sed -n '1,2p' logs/$C_CONVERSIONS >> logs/$C_CONV_M
 
@@ -154,8 +158,13 @@ grep "lc" logs/$C_CONVERSIONS > logs/$C_CONV_BHL
 sed -n '3,42p' logs/$C_CONVERSIONS > logs/$C_CONV_BFL
 
 sed -n '250,252p' logs/$OUTPUTFILE > logs/$C_CONV_PERCENT
-sed -e '1,9d; 33,34d; 56,57d;' logs/$C_CONV_M \
-| sed -e 's/c\]/%\]/g; s/, [-0-9].*/)/g' >> logs/$C_CONV_PERCENT
+sed -e '1,9d; 29,30d; 54,55d;' logs/$C_CONV_M \
+| sed 's/c\]/%\]/g' \
+| sed 's/, 69//g' \
+| sed 's/, 48//g' \
+| sed 's/, 126//g' \
+>> logs/$C_CONV_PERCENT
+
 sed -e 's/c\]/%\]/g; s/, [-0-9].*/)/g' logs/$C_CONV_BFL > logs/$C_CONV_PERCENT_B
 #rm logs/$C_CONVERSIONS
 }
