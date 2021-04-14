@@ -183,7 +183,9 @@ sed -n '39,44p' logs/$S_CONVERSIONS > logs/$S_CONV_BHL
 ######################################
 function get_p_conv_lines
 {
-sed -n '311,312p' logs/$OUTPUTFILE > logs/$P_CONVERSIONS
+sed -n '309,310p' logs/$OUTPUTFILE \
+| sed 's|STRING.*\[|STRING = \%s, ADDRESS = \[|g' \
+> logs/$P_CONVERSIONS
 sed -n '1p' logs/$P_CONVERSIONS | sed 's/%p/%0p/g' >> logs/$P_CONVERSIONS
 sed -n '1p' logs/$P_CONVERSIONS | sed 's/%p/%-p/g' >> logs/$P_CONVERSIONS
 sed -n '1p' logs/$P_CONVERSIONS | sed 's/%p/% p/g' >> logs/$P_CONVERSIONS

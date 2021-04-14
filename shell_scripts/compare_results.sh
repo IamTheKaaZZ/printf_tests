@@ -19,7 +19,7 @@ then
 	printf "\033[0;0m Output:	\033[0;32mOK	(⌐▨_▨)\033[0;0m \n"
 	printf "Output: OK " >> Results.log
 else
-	echo "Output:			KO	( ✖╭╮✖ )" >> Results.log
+	printf "\nOutput:			KO	( ✖╭╮✖ )\n" >> Results.log
 	sed -n '27p' temp_test.c >> Results.log
 	printf "\033[0;0m Output:	\033[0;31mKO	( ✖╭╮✖ )\033[0;0m \n"
 fi
@@ -28,7 +28,7 @@ then
 	printf "\033[0;0m Return Value:	\033[0;32mOK	(⌐▨_▨)\033[0;0m \n"
 	printf "Return Value: OK " >> Results.log
 else
-	echo "Return Value:	KO	( ✖╭╮✖ )" >> Results.log
+	printf "\nReturn Value:	KO	( ✖╭╮✖ )\n" >> Results.log
 	sed -n '27p' temp_test.c >> Results.log
 	printf "\033[0;0m Return Value:	\033[0;31mKO	( ✖╭╮✖ )\033[0;0m \n"
 fi

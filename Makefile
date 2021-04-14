@@ -6,7 +6,7 @@
 #    By: bcosters <bcosters@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/08 10:32:48 by bcosters          #+#    #+#              #
-#    Updated: 2021/04/14 14:13:51 by bcosters         ###   ########.fr        #
+#    Updated: 2021/04/14 15:13:06 by bcosters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,8 +89,6 @@ test:		$(RESULTS)
 			@${CC} ${CFLAGS} ${NOFLAG} ../libftprintf.a ${LIB} ${TEST} -o ${NAME}
 			@./${NAME} > result.log
 			@rm -f ${NAME}
-			@bash shell_scripts/compare_results.sh result.log
-			@rm -f result.log
 end:
 			@echo "$(ENDC)If there were any $(RED)KO's$(ENDC), check the $(LPURP)$(FINAL)$(ENDC) file for the logs of the tests"
 
@@ -98,7 +96,7 @@ end:
 
 clean:
 	@rm -f ${LIB} ${LIBHEAD}
-	@rm -rf ${LOGDIR} ${NAME} ${TEST} ${RESULTS}
+	@rm -rf ${LOGDIR} ${NAME} ${TEST} ${RESULTS} result.log
 
 fclean:		clean
 	@rm -f ${wildcard tests/*mand*} ${wildcard tests/*bonus*}

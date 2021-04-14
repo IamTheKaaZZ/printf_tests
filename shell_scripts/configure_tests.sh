@@ -51,7 +51,7 @@ do
         sed "s|&|$LINE|g" $TEST_M \
 		> temp_test.c
 		make test
-		#exit 0
+		bash shell_scripts/compare_results.sh ./result.log
         :
 done
 exec 0<&3
