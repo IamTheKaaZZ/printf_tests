@@ -92,7 +92,8 @@ grep "[- +#].*[di]" logs/$D_CONVERSIONS \
 | sed '34,47d' \
 > logs/$D_CONV_BFL
 
-sed -n -e 1,9p -e 30,31p -e 34p -e 37p -e 46,48p -e 57,81p -e 84,97p logs/$D_CONVERSIONS \
+sed -n -e 1,9p -e 30,31p -e 34p -e 37p -e 46,48p -e 57,81p -e 84,95p logs/$D_CONVERSIONS \
+| sed '40,41d' \
 > logs/$D_CONV_M
 
 #rm logs/$D_CONVERSIONS
