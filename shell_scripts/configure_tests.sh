@@ -69,75 +69,72 @@ exec 0<&3
 printf "\033[0;31mPREPARE YOURSELF!\033[0;0m \n"
 printf "\033[0;36m(⌐▀͡ ̯ʖ▀)\033[0;33m︻┻┳══━一一\033[0;0m \n\n"
 
-if [[ $1 = mand* ]]
+if [[ $1 = mand* || $1 = *bonus* ]]
 then
 	if [[ $1 = *c ]]
 	then
 		FILENAME=logs/$C_CONV_M
-		printf "\033[1;32mTEST for %%c MANDATORY\033[0;0m"
+		printf "\033[1;32mTEST for %%c\033[0;0m"
 		sleep 3
-		echo "TEST for %c MANDATORY" >> Results.log
+		echo "TEST for %c" >> Results.log
 		while_read_LINE_FD
 		sed "/Output: OK Return Value: OK /d" < Results.log >> finalresults.log
 		rm -f Results.log
 	elif [[ $1 = *Percent ]]
 	then
 		FILENAME=logs/$C_CONV_PERCENT
-		printf "\033[1;32mTEST for %% MANDATORY\033[0;0m"
+		printf "\033[1;32mTEST for %%\033[0;0m"
 		sleep 3
-		echo "TEST for %% MANDATORY" >> Results.log
+		echo "TEST for %%" >> Results.log
 		while_read_LINE_FD
 		sed "/Output: OK Return Value: OK /d" < Results.log >> finalresults.log
 		rm -f Results.log
 	elif [[ $1 = *s ]]
 	then
 		FILENAME=logs/$S_CONV_M
-		printf "\033[1;32mTEST for %%s MANDATORY\033[0;0m"
+		printf "\033[1;32mTEST for %%s\033[0;0m"
 		sleep 3
-		echo "TEST for %s MANDATORY" >> Results.log
+		echo "TEST for %s" >> Results.log
 		while_read_LINE_FD
 		sed "/Output: OK Return Value: OK /d" < Results.log >> finalresults.log
 		rm -f Results.log
 	elif [[ $1 = *d ]]
 	then
 		FILENAME=logs/$D_CONV_M
-		printf "\033[1;32mTEST for %%d and %%i MANDATORY\033[0;0m"
+		printf "\033[1;32mTEST for %%d and %%i\033[0;0m"
 		sleep 3
-		echo "TEST for %d and %i MANDATORY" >> Results.log
+		echo "TEST for %d and %i" >> Results.log
 		while_read_LINE_FD
 		sed "/Output: OK Return Value: OK /d" < Results.log >> finalresults.log
 		rm -f Results.log
 	elif [[ $1 = *u ]]
 	then
 		FILENAME=logs/$U_CONV_M
-		printf "\033[1;32mTEST for %%u MANDATORY\033[0;0m"
+		printf "\033[1;32mTEST for %%u\033[0;0m"
 		sleep 3
-		echo "TEST for %u MANDATORY" >> Results.log
+		echo "TEST for %u" >> Results.log
 		while_read_LINE_FD
 		sed "/Output: OK Return Value: OK /d" < Results.log >> finalresults.log
 		rm -f Results.log
 	elif [[ $1 = *x ]]
 	then
 		FILENAME=logs/$X_CONV_M
-		printf "\033[1;32mTEST for %%x and %%X MANDATORY\033[0;0m"
+		printf "\033[1;32mTEST for %%x and %%X\033[0;0m"
 		sleep 3
-		echo "TEST for %x and %X MANDATORY" >> Results.log
+		echo "TEST for %x and %X" >> Results.log
 		while_read_LINE_FD
 		sed "/Output: OK Return Value: OK /d" < Results.log >> finalresults.log
 		rm -f Results.log
 	elif [[ $1 = *p ]]
 	then
 		FILENAME=logs/$P_CONVERSIONS
-		printf "\033[1;32mTEST for %%p MANDATORY\033[0;0m"
+		printf "\033[1;32mTEST for %%p\033[0;0m"
 		sleep 3
-		echo "TEST for %p MANDATORY" >> Results.log
+		echo "TEST for %p" >> Results.log
 		while_read_LINE_FD
 		sed "/Output: OK Return Value: OK /d" < Results.log >> finalresults.log
 		rm -f Results.log
 	fi
-elif [[ $1 = *bonus* ]]
-then
-	echo "Bonus is not done yet LOL"
 else
 	exit 1
 fi

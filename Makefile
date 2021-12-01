@@ -6,7 +6,7 @@
 #    By: bcosters <bcosters@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/08 10:32:48 by bcosters          #+#    #+#              #
-#    Updated: 2021/04/14 15:13:06 by bcosters         ###   ########.fr        #
+#    Updated: 2021/12/01 11:20:58 by bcosters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,12 @@ TEST	= temp_test.c
 RESULTS = Results.log
 FINAL	= finalresults.log
 
-HEAD	= shell_scripts/simple_debugs.h ../ft_printf.h
+HEAD	= shell_scripts/simple_debugs.h ../ft_printf.h ../include/ft_printf.h ../includes/ft_printf.h ../incl/ft_printf.h
 
 LIB		= debugs.a
 LIBHEAD	= simple_debugs.h
 SCRIPTDIR	= shell_scripts/
-LOGDIR	= logs/
+LOGDIR	= $(SCRIPTDIR)logs/
 
 NAME	= test
 
@@ -33,7 +33,7 @@ NAME	= test
 
 CC		= gcc
 
-CFLAGS 	= -Wall -Wextra -Werror
+CFLAGS 	= -Wall -Wextra -Werror -I.. -I$(HEAD)
 
 NOFLAG	= -Wno-format -Wno-unused-parameter -Wno-unused-variable
 

@@ -1,0 +1,14 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/bcosters/own_projects/printf_tests'
+echo "Welcome to \033[1;32mPRINTF TESTER\033[0m: \033[1;33mRAPID FIRE \033[1;35mEDITION\033[0m"
+echo "The builtin tester checks for \033[0;36mmemory leaks\033[0m."
+echo "Do you want to \033[0;32mstart\033[0m the \033[0;31mFUN\033[0m?"
+bash shell_scripts/yesno.sh
+echo
+bash shell_scripts/mainscript.sh
+echo
+bash shell_scripts/choice.sh
+echo
+echo "\033[0mIf there were any \033[0;31mKO's\033[0m, check the \033[1;35mfinalresults.log\033[0m file for the logs of the tests"
+make: Leaving directory `/Users/bcosters/own_projects/printf_tests'
+ 
